@@ -26,6 +26,17 @@
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
+
+    --animate-time: time ease 1;
+    @keyframes time {
+        0%{
+            width: 0%;
+        }
+
+        100%{
+            width: 100;
+        }
+    }
 }
 
 @layer theme {

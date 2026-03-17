@@ -45,7 +45,7 @@ new #[Title('All to don\'ts')] class extends Component {
                         }
                     }" x-init="difficulty('{{ $list['difficulty'] }}')" wire:sort:item="{{ $list['id'] }}">
                     <div class="absolute animate-time w-full h-full -z-1 top-0 left-0"
-                        style="animation-duration: {{ $list['time'] * 600 }}ms;" x-bind:class="color">
+                        style="animation-duration: {{ $list['time'] * 60000 }}ms;" x-bind:class="color">
                     </div>
                     <div class="flex justify-between" x-data="{ check: false, toggleCheck() { this.check = !this.check } }">
                         <flux:heading level="2" size="lg">{{ $list['title'] }}</flux:heading>
@@ -56,7 +56,7 @@ new #[Title('All to don\'ts')] class extends Component {
                     <flux:text size="sm">{{ $list['description'] }}</flux:text>
                     <div class="flex justify-between">
                         <flux:text variant="strong">{{ $list['difficulty'] }}</flux:text>
-                        <flux:text variant="strong">{{ $list['time'] }}</flux:text>
+                        <flux:text variant="strong">{{ $list['time'] }} mins</flux:text>
                     </div>
 
 
@@ -65,3 +65,7 @@ new #[Title('All to don\'ts')] class extends Component {
         @endisland
     </ul>
 </div>
+
+<script>
+    console.log('Yow');
+</script>

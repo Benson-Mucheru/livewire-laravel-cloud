@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->text('title');
             $table->string('difficulty');
-            $table->time('time');
+            $table->integer('time');
             $table->string('description');
             $table->timestamps();
         });

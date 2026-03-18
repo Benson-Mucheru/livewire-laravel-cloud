@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('donots', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignUuid('user_id')->constrained('users')->cascadeOnDelete();
             $table->text('title');
             $table->string('difficulty');
             $table->integer('time');
             $table->string('description');
+            $table->integer('position')->nullable();
             $table->timestamps();
         });
     }

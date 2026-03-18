@@ -9,6 +9,6 @@ class Donot extends Model
 {
     use HasUuids;
     protected $fillable = [
-        'title', 'difficulty', 'time', 'description'
+        'user_id', 'title', 'difficulty', 'time', 'description', 'position'
     ];
 }

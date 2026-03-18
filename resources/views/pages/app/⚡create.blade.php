@@ -4,6 +4,7 @@ use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use App\Models\Donot;
+use Illuminate\Support\Facades\Auth;
 
 new #[Title('Add a to don\'t list')] class extends Component {
     #[Validate('required|min:5|max:20')]
@@ -21,7 +22,14 @@ new #[Title('Add a to don\'t list')] class extends Component {
     public function save()
     {
         $validated = $this->validate();
-        Donot::create($validated);
+        Donot::create([
+            'user_id' => Auth::user()->id,
+            'title' => $validated['title'],
+            'difficulty' => $validated['difficulty'],
+            'time' => $validated['time'],
+            'description' => $validated['description'],
+            'position' => count(Auth::user()->donots) + 1,
+        ]);
         $this->redirect('/dashboard', true);
     }
 };
@@ -51,7 +59,7 @@ new #[Title('Add a to don\'t list')] class extends Component {
 
         @if ($difficulty == 'intermediate')
             <flux:radio.group wire:model.live="time" label="Due Time">
-                <flux:radio value="20" label="20 mins" />
+                <flux:radio value="20" label="20 mins" checked />
                 <flux:radio value="25" label="25 mins" />
                 <flux:radio value="30" label="30 mins" />
             </flux:radio.group>
@@ -59,7 +67,7 @@ new #[Title('Add a to don\'t list')] class extends Component {
 
         @if ($difficulty == 'hard')
             <flux:radio.group wire:model.live="time" label="Due Time">
-                <flux:radio value="35" label="35 mins" />
+                <flux:radio value="35" label="35 mins" checked />
                 <flux:radio value="40" label="40 mins" />
                 <flux:radio value="45" label="45 mins" />
             </flux:radio.group>

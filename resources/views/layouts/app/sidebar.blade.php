@@ -18,10 +18,6 @@
                     wire:navigate>
                     Dashboard
                 </flux:sidebar.item>
-                <flux:sidebar.item icon="bookmark" :href="route('create')" :current="request()->routeIs('create')"
-                    wire:navigate>
-                    {{ __('Create') }}
-                </flux:sidebar.item>
             </flux:sidebar.group>
         </flux:sidebar.nav>
 
